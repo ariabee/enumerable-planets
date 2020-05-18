@@ -9,10 +9,12 @@
 </head>
 <body>
     <h1>Pick a planet:</h1>
-    <select>
-        <option th:each="planet : ${planets}"
-                th:value="${planet}" th:text="${planet.name}"></option>
-    </select>
+
+    <ul>
+        <th:block th:each="planet : ${planets}">
+            <li th:text="${planet.name}"></li>
+        </th:block>
+    </ul>
 
     <table class="table table-striped">
         <thead>
@@ -22,15 +24,13 @@
             </tr>
         </thead>
         <tbody>
-            <th:block th:each="planet : ${planets}">
-            <tr>
+            <tr th:each="planet : ${planets}">
                 <td th:text="${planet.name}"></td>
-                <td th:text="${planet.yearLength} + ' Earth days in one year.'"></td>
+                <td th:text="${planet.yearLength + ' Earth days to orbit sun.'}"></td>
             </tr>
-            </th:block>
         </tbody>
-
     </table>
+
 
 </body>
 </html>
